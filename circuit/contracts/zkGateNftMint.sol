@@ -6,6 +6,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+interface IVerifier {
+    function verifyProof(uint[2] calldata _pA, uint[2][2] calldata _pB, uint[2] calldata _pC, uint[2] calldata _pubSignals) external view returns (bool);
+}
+
 contract zkGATEMintNft is ERC1155, ERC1155Burnable {
     
     using Counters for Counters.Counter;
@@ -15,7 +19,11 @@ contract zkGATEMintNft is ERC1155, ERC1155Burnable {
     
     Counters.Counter _tokenId;
 
-    constructor() ERC1155("") {
+    IVerifier verifier;
+
+    constructor(address _verifier_address) ERC1155("") {
+
+        verifier = IVerifier(_verifier_address);
         // This will make the default counter start from 1, and the first minted NFT with the token id of 1.
         // Therefore when the map returns 0 for _nft_id_map it means that the user doesn't have any minted NFT.
         _tokenId.increment();
@@ -25,9 +33,12 @@ contract zkGATEMintNft is ERC1155, ERC1155Burnable {
         _uris[_id] = newuri;
     }
 
-    function getURI() external view returns(string memory) {
+    function getURI(uint[2] calldata _pA, uint[2][2] calldata _pB, uint[2] calldata _pC, uint[2] calldata _pubSignals) external view returns(string memory) {
         uint256 _id = _nft_id_map[msg.sender];
         require(_id > 0, "The user doesn't have any minted NFT.");
+
+        require(verifier.verifyProof(_pA, _pB, _pC, _pubSignals), "Proof Verified OK");
+
         return _uris[_id];
     }
 

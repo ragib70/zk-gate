@@ -33,13 +33,15 @@ contract zkGATEMintNft is ERC1155, ERC1155Burnable {
         _uris[_id] = newuri;
     }
 
-    function getURI(uint[2] calldata _pA, uint[2][2] calldata _pB, uint[2] calldata _pC, uint[2] calldata _pubSignals) external view returns(string memory) {
+    function getURI() external view returns(string memory) {
         uint256 _id = _nft_id_map[msg.sender];
         require(_id > 0, "The user doesn't have any minted NFT.");
 
-        require(verifier.verifyProof(_pA, _pB, _pC, _pubSignals), "Proof Verified OK");
-
         return _uris[_id];
+    }
+
+    function getAccess(uint[2] calldata _pA, uint[2][2] calldata _pB, uint[2] calldata _pC, uint[2] calldata _pubSignals) external view returns (bool) {
+        return verifier.verifyProof(_pA, _pB, _pC, _pubSignals);
     }
 
     // Tie this mint function with local proof verifiability meaning this will be called only when the local browser proof is verified.

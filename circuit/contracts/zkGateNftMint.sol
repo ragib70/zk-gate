@@ -40,6 +40,14 @@ contract zkGATEMintNft is ERC1155, ERC1155Burnable {
         return _uris[_id];
     }
 
+    function getUserStatus() external view returns(bool){
+        if(_nft_id_map[msg.sender] > 0){
+            return true;
+        }
+
+        return false;
+    }
+
     function getAccess(uint[2] calldata _pA, uint[2][2] calldata _pB, uint[2] calldata _pC, uint[2] calldata _pubSignals) external view returns (bool) {
         return verifier.verifyProof(_pA, _pB, _pC, _pubSignals);
     }

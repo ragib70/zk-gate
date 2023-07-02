@@ -20,13 +20,13 @@ zkGATE is a login protocol which 3rd party apps can integrate, through which onl
 
 * Integrate with 3rd party app: Any app that wants users to give the secure login mechanism needs to integrate zkGATE as a login option. Once done, the 3rd party app will be visible on the zkGATE page to generate NFT. The 3rd party app will be having a public key and a private key. The private key is shared securely with zkGATE at the time the app integrates zkGATE into it.  
 
-Google Authorisation: A user who wants to login into the 3rd party app needs to get the zkGATE NFT. For this, to get the trusted authorization of the user, he is prompted to get the Google sign-in data. Through this process, the 3rd party app gets the trust of Google that the user signing in has a Google-authorized account.
+* Google Authorisation: A user who wants to login into the 3rd party app needs to get the zkGATE NFT. For this, to get the trusted authorization of the user, he is prompted to get the Google sign-in data. Through this process, the 3rd party app gets the trust of Google that the user signing in has a Google-authorized account.
 
-Generating Proof: Once the personal information from Google is fetched only those data fields which are required by the 3rd party app is passed down while the other data fields are encrypted as nullifier into the proof. To protect from fake proofs, we use the HASH(secretKey) === publicKey of the 3rd party app. Since the secret key is securely protected at the zkGATE and will only be used to generate proof after Google authorization, hackers cannot bypass this check.
+* Generating Proof: Once the personal information from Google is fetched only those data fields which are required by the 3rd party app is passed down while the other data fields are encrypted as nullifier into the proof. To protect from fake proofs, we use the HASH(secretKey) === publicKey of the 3rd party app. Since the secret key is securely protected at the zkGATE and will only be used to generate proof after Google authorization, hackers cannot bypass this check.
 
-Minting NFT: Once the above processes are completed, the user gets an NFT minted on their wallet address. In the NFT metadata, the proof is written, and now the user gets redirected to the 3rd party app page.
+* Minting NFT: Once the above processes are completed, the user gets an NFT minted on their wallet address. In the NFT metadata, the proof is written, and now the user gets redirected to the 3rd party app page.
 
-Login: The user comes on the 3rd party app page and clicks on login using zkGATE. This causes in the backend to verify whether the user has an NFT with valid proof. If yes access is granted in the app, else access is denied. 
+* Login: The user comes on the 3rd party app page and clicks on login using zkGATE. This causes in the backend to verify whether the user has an NFT with valid proof. If yes access is granted in the app, else access is denied. 
 
 ## Future Scope
 
@@ -37,8 +37,8 @@ Since it acts as a bridge between web2 apps to use web3 authentication along the
 
 ## Challenges we ran into
 
-Figuring out the circom circuit to convert this use case into zero-knowledge took days.
+* Figuring out the circom circuit to convert this use case into zero-knowledge took days.
 
-Integrating Google authorization using Google auth2 API was a bit challenging.
+* Integrating Google authorization using Google auth2 API was a bit challenging.
 
-For demo purpose, we're required to build another app that has integrated zkGATE into it as a login solution, which was like making another project in a small time frame.
+* For demo purposes, we're required to build another app that has integrated zkGATE into it as a login solution, which was like making another project in a small time frame.

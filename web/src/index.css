@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+
+html,
+body,
+#root,
+.app,
+.content {
+  min-height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.app {
+  display: flex;
+}
+
+.text-cut{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.bg{
+    fill: transparent; 
+    stroke: #4a4646; 
+    stroke-width: 1.6; 
+    stroke-linecap: round; 
+    stroke-dasharray: 30; 
+    transform-origin: calc(8px) calc(8px) 0px; 
+    animation:rotation 1s linear infinite normal;
+}
+
+.animated{
+    fill: transparent; 
+    opacity: 0.5;
+    stroke: white; 
+    stroke-width: 1.6; 
+    stroke-linecap: round; 
+    stroke-dasharray: 30; 
+    transform-origin: calc(8px) calc(8px) 0px; 
+    animation:rotation 0.5s linear infinite normal;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }

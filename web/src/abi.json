@@ -1,0 +1,377 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "_uploaderAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "_cid",
+				"type": "string"
+			}
+		],
+		"name": "CIDRegistered",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_cid",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_lastModified",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_fileName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_sizeInKB",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_fileType",
+				"type": "string"
+			}
+		],
+		"name": "registerCID",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"name": "CIDMappedData",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastModified",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "fileName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "sizeInKB",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "fileType",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "database",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "CID",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastModified",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "fileName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "sizeInKB",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "fileType",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "uploader",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "isAlreadyPresent",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "isValid",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "idx",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_cid",
+				"type": "string"
+			}
+		],
+		"name": "returnCIDMappedData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastModified",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "fileName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sizeInKB",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "fileType",
+						"type": "string"
+					}
+				],
+				"internalType": "struct CIDRegistration.CIDContent",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "returnData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "CID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastModified",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "fileName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sizeInKB",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "fileType",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "uploader",
+						"type": "address"
+					}
+				],
+				"internalType": "struct CIDRegistration.entryContent[][]",
+				"name": "",
+				"type": "tuple[][]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "returnIndividualUploaderData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "CID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastModified",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "fileName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sizeInKB",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "fileType",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "uploader",
+						"type": "address"
+					}
+				],
+				"internalType": "struct CIDRegistration.entryContent[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "returnUploader",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "uploaderInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "uploadersCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

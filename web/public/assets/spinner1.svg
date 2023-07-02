@@ -1,0 +1,20 @@
+<svg version="1.1"  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 16 16" style="x: 0; y: 0; ">
+    <!-- <circle cx="8" cy="8" r="6.4" style="z-index: 1; fill: transparent; stroke: white; stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 50.24;"></circle> -->
+    <circle cx="8" cy="8" r="6.4" stroke-dasharray= "50.24" style="z-index: 0; fill: transparent; stroke: black; stroke-width: 1.6; stroke-linecap: round; transform-origin: calc(8px) calc(8px) 0px; animation: 2.2s linear 0s infinite normal none running k-kspsgo;"></circle>
+</svg>
+
+<!-- c-hLmDBj {
+    x: 0;
+    y: 0;
+    width: 16px;
+    height: 16px;
+} -->
+
+<!-- .loader {
+    border: 0.4rem solid #f3f3f3;
+    border-top: 0.4rem solid #04aa6d;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    animation: spin 2s linear infinite;
+} -->

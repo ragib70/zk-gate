@@ -35,6 +35,13 @@ import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ReportIcon from "@mui/icons-material/Report";
 import { PageContext } from "../contexts/page";
+import {
+	addDoc,
+	createClient,
+	createFromPrivateKey,
+	getCollection,
+	syncAccountNonce,
+} from "db3.js";
 
 const style = {
 	position: "absolute",
@@ -53,6 +60,21 @@ const encodeToBigInt = (str: string) => {
 		Array.from(str).reduce((p, c) => p + String(c.charCodeAt(0)), "")
 	);
 };
+
+// create client
+const private_key =
+	"0xdc6f560254643be3b4e90a6ba85138017aadd78639fbbb43c57669067c3bbe76";
+const account = createFromPrivateKey(private_key);
+const client = createClient(
+	"https://rollup.cloud.db3.network",
+	"https://index.cloud.db3.network",
+	account
+);
+
+// use your database addr
+const dbAddr = "0x1ef32cc9655bf805dc2a27471a2b1d59c544808a";
+// use your collection name
+const colName = "nft-metadata";
 
 const HomePage: FC = () => {
 	const theme: any = useTheme();
@@ -135,6 +157,14 @@ const HomePage: FC = () => {
 		);
 
 		setResult(res);
+	};
+
+	const pushToDb3 = async (metadata: any) => {
+		// add a document
+		await syncAccountNonce(client);
+		const collection = await getCollection(dbAddr, colName, client);
+
+		const { id } = await addDoc(collection, metadata);
 	};
 
 	const generate = async (address: string, payload: any) => {
@@ -221,7 +251,7 @@ const HomePage: FC = () => {
 				}
 				console.log("exists", exists);
 
-				(ZK_GATE_CONTRACT as any).methods
+				await (ZK_GATE_CONTRACT as any).methods
 					.mint(
 						`https://general-blockchain.s3.ap-south-1.amazonaws.com/public/zk-snark/${account?.code}/metadata.json`
 					)
@@ -233,6 +263,10 @@ const HomePage: FC = () => {
 						setResultModal({ show: true, code: 1 });
 						setUserDataQuery({ loading: false });
 					});
+
+				await pushToDb3(metadata).then(() => {
+					console.log("Successfully pushed to db3");
+				});
 			})
 			.catch((error) => {
 				setUserDataQuery({ loading: false });
@@ -342,7 +376,7 @@ const HomePage: FC = () => {
 									src={`${process.env.PUBLIC_URL}/assets/netflix-logo.png`}
 									height={20}
 									width={80}
-                  alt="Netflix"
+									alt="Netflix"
 								/>
 							</MenuItem>
 						</Select>
@@ -502,9 +536,19 @@ const HomePage: FC = () => {
 								color={colors.grey[100]}
 								paddingLeft={1}
 							>
-								{resultModal.code === 1
-									? <Typography>You can now login in <Link href='https://zk-learn.web.app/' target="_blank">{selectedApp}</Link></Typography>
-									: ""}
+								{resultModal.code === 1 ? (
+									<Typography>
+										You can now login in{" "}
+										<Link
+											href="https://zk-learn.web.app/"
+											target="_blank"
+										>
+											{selectedApp}
+										</Link>
+									</Typography>
+								) : (
+									""
+								)}
 							</Typography>
 						</Box>
 						<IconButton

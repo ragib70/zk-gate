@@ -540,8 +540,9 @@ const HomePage: FC = () => {
 									<Typography>
 										You can now login in{" "}
 										<Link
-											href="https://zk-learn.web.app/"
+											href="https://patex-learn.web.app/"
 											target="_blank"
+                      color={colors.primary[100]}
 										>
 											{selectedApp}
 										</Link>

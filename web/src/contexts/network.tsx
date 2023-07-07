@@ -69,12 +69,12 @@ const NetworkProvider: FC<{ children: any }> = ({ children }) => {
 				setNetworkOption(false);
 				setSelectedNetworkId(decimalString);
 				console.log(networks[decimalString].contractAddress);
-				setContract(
-					new web3.eth.Contract(
-						ABI,
-						networks[decimalString].contractAddress
-					)
-				);
+				// setContract(
+				// 	new web3.eth.Contract(
+				// 		ABI,
+				// 		networks[decimalString].contractAddress
+				// 	)
+				// );
 			}
 		};
 
